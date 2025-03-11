@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sujina646/CS465-fullstack#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1"
   }
 }
