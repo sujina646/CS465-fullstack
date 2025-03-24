@@ -1,19 +1,29 @@
-<header>
-    <h1>Travlr Getaways</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/travel">Travel</a></li>
-            <li><a href="/rooms">Rooms</a></li>
-            <li><a href="/meals">Meals</a></li>
-            <li><a href="/news">News</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <h2>Welcome to Travlr Getaways</h2>
-    <p>Explore amazing travel destinations with us!</p>
-    <img src="/images/seafoods.jpg" alt="Travel Destination">
-</main>
+<div class="container">
+    <div id="contents">
+        <h1>Travlr Getaways</h1>
+        <nav id="navigation">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/travel">TRAVEL</a></li>
+                <li><a href="/rooms">ROOMS</a></li>
+                <li><a href="/meals">MEALS</a></li>
+                <li><a href="/news">NEWS</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div id="main">
+            <img src="/images/seafoods.jpg" alt="Travel Destination">
+            <p>THE SOUND OF THE SEA</p>
+            <h2>Our Travel Packages</h2>
+            {{#each trips}}
+                <div class="trip">
+                    <h3>{{this.title}}</h3>
+                    <img src="{{this.image}}" alt="{{this.title}}">
+                    <p>{{this.description}}</p>
+                    <p>Price: ${{this.price}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

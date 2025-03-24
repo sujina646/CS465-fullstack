@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Beach Paradise",
+        "description": "A relaxing getaway to a sunny beach with crystal-clear waters.",
+        "price": 499.99,
+        "image": "/images/seafoods.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Mountain Adventure",
+        "description": "An exciting hiking trip through the mountains with stunning views.",
+        "price": 699.99,
+        "image": "/images/seafoods.jpg"
+    },
+    {
+        "id": 3,
+        "title": "City Explorer",
+        "description": "Discover the vibrant culture and history of a bustling city.",
+        "price": 399.99,
+        "image": "/images/seafoods.jpg"
+    }
+]
