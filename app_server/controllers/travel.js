@@ -1,23 +1,32 @@
-const fs = require('fs').promises;
-const path = require('path');
+const axios = require('axios');
 
-const travelController = async (req, res) => {
+// Define base API URL
+const apiBaseUrl = 'http://localhost:3000/api/trips';
+
+/* GET travel page */
+const travelList = async (req, res) => {
     try {
-        // Read the trips.json file
-        const tripsPath = path.join(__dirname, '../../data/trips.json');
-        const data = await fs.readFile(tripsPath, 'utf8');
-        const trips = JSON.parse(data);
-        console.log('Trips data:', trips); // Debugging
-
-        // Render the travel.hbs template with the trips data
-        res.render('travel', {
-            title: 'Travlr Getaways',
+        // Get trips from API
+        const response = await axios.get(apiBaseUrl);
+        const trips = response.data;
+        
+        // Render the page with trips
+        res.render('travel', { 
+            title: 'Travel - Travlr Getaways',
+            isTravel: true,
             trips: trips
         });
     } catch (error) {
-        console.error('Error reading trips.json:', error);
-        res.status(500).send('Internal Server Error');
+        console.error('Error fetching trips from API:', error);
+        res.render('travel', { 
+            title: 'Travel - Travlr Getaways',
+            isTravel: true,
+            trips: [],
+            error: 'Unable to retrieve trip data at this time'
+        });
     }
 };
 
-module.exports = { travelController };
+module.exports = {
+    travelList
+};

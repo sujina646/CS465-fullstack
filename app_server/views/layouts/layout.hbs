@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/" class="home {{#if isHome}}active{{/if}}">HOME</a></li>
+                <li><a href="/travel" class="{{#if isTravel}}active{{/if}}">TRAVEL</a></li>
+                <li><a href="/rooms">ROOMS</a></li>
+                <li><a href="/meals">MEALS</a></li>
+                <li><a href="/news">NEWS</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <main>
+            {{{body}}}
+        </main>
+    </div>
+</body>
+</html> 

@@ -1,29 +1,20 @@
-<div class="container">
-    <div id="contents">
-        <h1>Travlr Getaways</h1>
-        <nav id="navigation">
-            <ul>
-                <li><a href="/">HOME</a></li>
-                <li><a href="/travel">TRAVEL</a></li>
-                <li><a href="/rooms">ROOMS</a></li>
-                <li><a href="/meals">MEALS</a></li>
-                <li><a href="/news">NEWS</a></li>
-                <li><a href="/about">ABOUT</a></li>
-                <li><a href="/contact">CONTACT</a></li>
-            </ul>
-        </nav>
-        <div id="main">
-            <img src="/images/seafoods.jpg" alt="Travel Destination">
-            <p>THE SOUND OF THE SEA</p>
-            <h2>Our Travel Packages</h2>
-            {{#each trips}}
-                <div class="trip">
-                    <h3>{{this.title}}</h3>
-                    <img src="{{this.image}}" alt="{{this.title}}">
+<h1 class="page-title">TRAVEL</h1>
+
+{{#if trips}}
+    {{#each trips}}
+        <div class="destination">
+            <h2>{{this.title}}</h2>
+            <div class="destination-content">
+                <div class="destination-text">
                     <p>{{this.description}}</p>
-                    <p>Price: ${{this.price}}</p>
+                    <p class="price">Price: ${{this.price}}</p>
                 </div>
-            {{/each}}
+                <div class="destination-image">
+                    <img src="{{this.image}}" alt="{{this.title}}">
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    {{/each}}
+{{else}}
+    <p>No trips available at the moment. Please check back later.</p>
+{{/if}} 

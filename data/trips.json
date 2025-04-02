@@ -2,22 +2,22 @@
     {
         "id": 1,
         "title": "Beach Paradise",
-        "description": "A relaxing getaway to a sunny beach with crystal-clear waters.",
-        "price": 499.99,
-        "image": "/images/seafoods.jpg"
+        "description": "Experience the ultimate beach getaway perfect for families and couples. Enjoy pristine beaches, crystal clear waters, and world-class amenities.",
+        "price": 1299,
+        "image": "/images/sea-sound.jpg"
     },
     {
         "id": 2,
         "title": "Mountain Adventure",
-        "description": "An exciting hiking trip through the mountains with stunning views.",
-        "price": 699.99,
-        "image": "/images/seafoods.jpg"
+        "description": "Embark on an unforgettable mountain expedition. Perfect for adventure enthusiasts and nature lovers seeking thrilling experiences.",
+        "price": 899,
+        "image": "/images/kayak.jpg"
     },
     {
         "id": 3,
-        "title": "City Explorer",
-        "description": "Discover the vibrant culture and history of a bustling city.",
-        "price": 399.99,
-        "image": "/images/seafoods.jpg"
+        "title": "Reef Explorer",
+        "description": "Discover the vibrant underwater world with guided diving tours, reef exploration, and marine life encounters.",
+        "price": 1499,
+        "image": "/images/reef1.jpg"
     }
 ]

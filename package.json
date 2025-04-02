@@ -1,25 +1,17 @@
 {
   "name": "travlr",
-  "version": "1.0.0",
-  "description": "CS-465 Full stack Development with MEAN",
-  "main": "server.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seed.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sujina646/CS465-fullstack.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sujina646/CS465-fullstack/issues"
-  },
-  "homepage": "https://github.com/sujina646/CS465-fullstack#readme",
   "dependencies": {
-    "express": "^4.21.2",
-    "express-handlebars": "^8.0.1"
+    "axios": "^1.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-handlebars": "^7.1.2",
+    "http-errors": "~1.6.3",
+    "mongoose": "^7.8.6"
   }
 }
