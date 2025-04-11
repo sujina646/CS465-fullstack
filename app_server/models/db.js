@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
+const dbURI = 'mongodb://127.0.0.1:27017/travlr';
 
-// Use environment variable or default to local MongoDB
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/travlr';
-console.log(`Attempting to connect to MongoDB at ${dbURI}`);
-
+// Connect to the database
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -11,11 +9,10 @@ mongoose.connect(dbURI, {
     console.log(`Mongoose connected to ${dbURI}`);
 }).catch(err => {
     console.log('Mongoose connection error:', err);
-    // Don't exit during testing/development
-    // process.exit(1);
+    process.exit(1);
 });
 
-// Connection events
+// Monitor connection events
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbURI}`);
 });
@@ -30,10 +27,15 @@ mongoose.connection.on('disconnected', () => {
 
 // Graceful shutdown function
 const gracefulShutdown = (msg, callback) => {
-    mongoose.connection.close(() => {
-        console.log(`Mongoose disconnected through ${msg}`);
-        callback();
-    });
+    mongoose.connection.close()
+        .then(() => {
+            console.log(`Mongoose disconnected through ${msg}`);
+            callback();
+        })
+        .catch(err => {
+            console.log('Error during mongoose disconnection:', err);
+            callback();
+        });
 };
 
 // For nodemon restarts
@@ -58,4 +60,4 @@ process.on('SIGTERM', () => {
 });
 
 // Import models
-require('./trips'); 
+require('./travlr'); 

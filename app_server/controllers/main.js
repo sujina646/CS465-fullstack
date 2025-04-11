@@ -1,13 +1,15 @@
 const axios = require('axios');
 
-// Define base API URL
-const apiBaseUrl = 'http://localhost:3000/api/trips';
+// Define API URL based on environment
+const apiOptions = {
+    server: 'http://localhost:3000'
+};
 
 /* GET home page */
 const index = async (req, res) => {
     try {
-        // Get trips from API
-        const response = await axios.get(apiBaseUrl);
+        // Get trips from the API
+        const response = await axios.get(`${apiOptions.server}/api/trips`);
         const trips = response.data;
         
         // Render the home page with trips

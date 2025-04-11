@@ -1,0 +1,44 @@
+<div class="trip-detail">
+    <h1 class="page-title">{{trip.name}}</h1>
+    
+    <div class="trip-content">
+        <div class="trip-image">
+            <img src="{{trip.image}}" alt="{{trip.name}}">
+        </div>
+        
+        <div class="trip-info">
+            <table class="trip-details-table">
+                <tr>
+                    <th>Trip Code:</th>
+                    <td>{{trip.code}}</td>
+                </tr>
+                <tr>
+                    <th>Duration:</th>
+                    <td>{{trip.length}}</td>
+                </tr>
+                <tr>
+                    <th>Start Date:</th>
+                    <td>{{trip.start}}</td>
+                </tr>
+                <tr>
+                    <th>Resort:</th>
+                    <td>{{trip.resort}}</td>
+                </tr>
+                <tr>
+                    <th>Price Per Person:</th>
+                    <td>${{trip.perPerson}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="trip-description">
+        <h2>About this Trip</h2>
+        <p>{{trip.description}}</p>
+    </div>
+    
+    <div class="trip-actions">
+        <a href="/travel" class="btn btn-secondary">Back to All Trips</a>
+        <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+</div> 

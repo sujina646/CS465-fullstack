@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dbURI = 'mongodb://127.0.0.1:27017/travlr';
-require('./app_server/models/travlr');
+require('./travlr');
 const Trip = mongoose.model('Trip');
 
 const trips = [

@@ -9,4 +9,7 @@ router.get('/', ctrlMain.index);
 /* GET travel page */
 router.get('/travel', ctrlTravel.travelList);
 
+/* GET trip details page */
+router.get('/travel/:tripCode', ctrlTravel.tripDetails);
+
 module.exports = router; 

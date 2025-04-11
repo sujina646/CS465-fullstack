@@ -1,16 +1,18 @@
 const axios = require('axios');
 
-// Define base API URL
-const apiBaseUrl = 'http://localhost:3000/api/trips';
+// Define API URL based on environment
+const apiOptions = {
+    server: 'http://localhost:3000'
+};
 
 /* GET travel page */
 const travelList = async (req, res) => {
     try {
-        // Get trips from API
-        const response = await axios.get(apiBaseUrl);
+        // Get trips from the API
+        const response = await axios.get(`${apiOptions.server}/api/trips`);
         const trips = response.data;
         
-        // Render the page with trips
+        // Render the travel page with trips
         res.render('travel', { 
             title: 'Travel - Travlr Getaways',
             isTravel: true,
@@ -27,6 +29,36 @@ const travelList = async (req, res) => {
     }
 };
 
+/* GET trip details page */
+const tripDetails = async (req, res) => {
+    try {
+        // Get tripCode from URL parameter
+        const tripCode = req.params.tripCode;
+        
+        if (!tripCode) {
+            throw new Error('Trip code is required');
+        }
+        
+        // Get trip details from the API
+        const response = await axios.get(`${apiOptions.server}/api/trips/${tripCode}`);
+        const trip = response.data;
+        
+        // Render the trip details page
+        res.render('trip-detail', {
+            title: `${trip.name} - Travlr Getaways`,
+            trip: trip
+        });
+    } catch (error) {
+        console.error('Error fetching trip details from API:', error);
+        res.render('error', {
+            title: 'Error - Travlr Getaways',
+            message: 'Unable to retrieve trip details at this time',
+            error: req.app.get('env') === 'development' ? error : {}
+        });
+    }
+};
+
 module.exports = {
-    travelList
+    travelList,
+    tripDetails
 };

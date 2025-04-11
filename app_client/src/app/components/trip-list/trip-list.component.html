@@ -1,0 +1,36 @@
+<div class="trip-list">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Available Trips</h2>
+    <button class="btn btn-success" (click)="onAddTrip()">
+      <i class="bi bi-plus-circle"></i> Add New Trip
+    </button>
+  </div>
+
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="text-center p-5">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Trip cards -->
+  <div *ngIf="!isLoading && !error" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div *ngFor="let trip of trips" class="col">
+      <app-trip-card
+        [trip]="trip"
+        (edit)="onEditTrip($event)"
+        (delete)="onDeleteTrip($event)">
+      </app-trip-card>
+    </div>
+  </div>
+
+  <!-- No trips message -->
+  <div *ngIf="!isLoading && !error && trips.length === 0" class="alert alert-info">
+    No trips available.
+  </div>
+</div>

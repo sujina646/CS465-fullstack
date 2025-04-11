@@ -1,0 +1,46 @@
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit()" class="p-4">
+  <div class="mb-3">
+    <label for="code" class="form-label">Code</label>
+    <input type="text" class="form-control" id="code" formControlName="code">
+  </div>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+
+  <div class="mb-3">
+    <label for="length" class="form-label">Length (days)</label>
+    <input type="text" class="form-control" id="length" formControlName="length">
+  </div>
+
+  <div class="mb-3">
+    <label for="start" class="form-label">Start Date</label>
+    <input type="date" class="form-control" id="start" formControlName="start">
+  </div>
+
+  <div class="mb-3">
+    <label for="resort" class="form-label">Resort</label>
+    <input type="text" class="form-control" id="resort" formControlName="resort">
+  </div>
+
+  <div class="mb-3">
+    <label for="perPerson" class="form-label">Cost per Person</label>
+    <input type="text" class="form-control" id="perPerson" formControlName="perPerson">
+  </div>
+
+  <div class="mb-3">
+    <label for="image" class="form-label">Image URL</label>
+    <input type="text" class="form-control" id="image" formControlName="image">
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+  </div>
+
+  <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary" [disabled]="!tripForm.valid">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </div>
+</form> 
