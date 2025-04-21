@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Login</h2>
+          
+          <!-- Error alert -->
+          <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+          </div>
+          
+          <!-- Login form -->
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{'is-invalid': emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)}"
+              />
+              <div class="invalid-feedback" *ngIf="emailControl?.errors?.['required']">
+                Email is required
+              </div>
+              <div class="invalid-feedback" *ngIf="emailControl?.errors?.['email']">
+                Please enter a valid email address
+              </div>
+            </div>
+            
+            <!-- Password -->
+            <div class="mb-4">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{'is-invalid': passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)}"
+              />
+              <div class="invalid-feedback" *ngIf="passwordControl?.errors?.['required']">
+                Password is required
+              </div>
+              <div class="invalid-feedback" *ngIf="passwordControl?.errors?.['minlength']">
+                Password must be at least 6 characters
+              </div>
+            </div>
+            
+            <!-- Submit button -->
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="loginForm.invalid || isLoading"
+            >
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

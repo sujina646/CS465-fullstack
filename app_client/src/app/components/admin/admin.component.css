@@ -1,0 +1,14 @@
+.admin-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding-bottom: 2rem;
+}
+
+.navbar-brand {
+  font-weight: 600;
+}
+
+.alert-info {
+  background-color: #e6f3ff;
+  border-color: #b8daff;
+} 

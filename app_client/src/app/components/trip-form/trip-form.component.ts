@@ -1,11 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Trip } from '../../models/trip';
 
 @Component({
   selector: 'app-trip-form',
   templateUrl: './trip-form.component.html',
-  styleUrls: ['./trip-form.component.css']
+  styleUrls: ['./trip-form.component.css'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class TripFormComponent implements OnInit {
   @Input() trip?: Trip;
@@ -29,7 +32,13 @@ export class TripFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.trip) {
-      this.tripForm.patchValue(this.trip);
+      // Format date for the input field
+      const formattedTrip = { ...this.trip };
+      if (formattedTrip.start instanceof Date) {
+        const date = new Date(formattedTrip.start);
+        formattedTrip.start = date.toISOString().split('T')[0] as any;
+      }
+      this.tripForm.patchValue(formattedTrip);
     }
   }
 

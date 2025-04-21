@@ -58,4 +58,5 @@ process.on('SIGTERM', () => {
 });
 
 // Import models
-require('./trips'); 
+require('./trips');
+require('./users'); 

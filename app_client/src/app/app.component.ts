@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    CommonModule
+    CommonModule,
+    NavComponent
   ]
 })
 export class AppComponent {

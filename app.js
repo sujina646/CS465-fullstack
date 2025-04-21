@@ -4,19 +4,32 @@ require('./app_api/models/db');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const passport = require('passport');
 const apiRouter = require('./app_api/routes/index');
+
+// Load passport config
+require('./app_api/config/passport');
 
 const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+// Configure CORS
+const corsOptions = {
+  origin: ['http://localhost:4200', 'http://localhost:3000'],
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+// Initialize Passport
+app.use(passport.initialize());
 
 // API Routes
 app.use('/api', apiRouter);
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve images from the public/images directory
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Serve static files from the Angular app
 app.use(express.static(path.join(__dirname, 'app_client/dist/app_client')));

@@ -49,12 +49,16 @@ const tripsList = async (req, res) => {
 };
 
 /**
- * GET /api/trips/:tripCode - Get a single trip by code
- * Returns details for a specific trip based on code
+ * GET /api/trips/:tripId - Get a single trip by ID
+ * Returns details for a specific trip based on ID
  */
-const tripsFindByCode = async (req, res) => {
+const tripsFindById = async (req, res) => {
     try {
-        const trip = await Trip.findOne({ 'code': req.params.tripCode });
+        if (!mongoose.Types.ObjectId.isValid(req.params.tripId)) {
+            return res.status(400).json({ "message": "Invalid trip ID" });
+        }
+        
+        const trip = await Trip.findById(req.params.tripId);
         if (!trip) {
             return res.status(404).json({ "message": "Trip not found" });
         }
@@ -78,13 +82,17 @@ const tripsCreate = async (req, res) => {
 };
 
 /**
- * PUT /api/trips/:tripCode - Update a trip
+ * PUT /api/trips/:tripId - Update a trip
  * Updates an existing trip in the database
  */
 const tripsUpdate = async (req, res) => {
     try {
-        const trip = await Trip.findOneAndUpdate(
-            { 'code': req.params.tripCode },
+        if (!mongoose.Types.ObjectId.isValid(req.params.tripId)) {
+            return res.status(400).json({ "message": "Invalid trip ID" });
+        }
+        
+        const trip = await Trip.findByIdAndUpdate(
+            req.params.tripId,
             req.body,
             { new: true, runValidators: true }
         );
@@ -98,12 +106,16 @@ const tripsUpdate = async (req, res) => {
 };
 
 /**
- * DELETE /api/trips/:tripCode - Delete a trip
+ * DELETE /api/trips/:tripId - Delete a trip
  * Deletes an existing trip from the database
  */
 const tripsDelete = async (req, res) => {
     try {
-        const trip = await Trip.findOneAndDelete({ 'code': req.params.tripCode });
+        if (!mongoose.Types.ObjectId.isValid(req.params.tripId)) {
+            return res.status(400).json({ "message": "Invalid trip ID" });
+        }
+        
+        const trip = await Trip.findByIdAndDelete(req.params.tripId);
         if (!trip) {
             return res.status(404).json({ "message": "Trip not found" });
         }
@@ -115,7 +127,7 @@ const tripsDelete = async (req, res) => {
 
 module.exports = {
     tripsList,
-    tripsFindByCode,
+    tripsFindById,
     tripsCreate,
     tripsUpdate,
     tripsDelete

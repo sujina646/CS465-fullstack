@@ -1,0 +1,19 @@
+<div class="modal" [class.show]="isOpen" [class.d-block]="isOpen" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ modalTitle }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+      </div>
+      <div class="modal-body">
+        <app-trip-form 
+          [trip]="trip" 
+          (save)="onSave($event)" 
+          (cancel)="onClose()">
+        </app-trip-form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show" *ngIf="isOpen"></div> 

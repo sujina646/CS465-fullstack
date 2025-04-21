@@ -1,7 +1,8 @@
 <div class="card h-100 shadow-sm">
   <img [src]="getImageUrl(trip.code)" 
        class="card-img-top" 
-       [alt]="trip.name">
+       [alt]="trip.name"
+       (error)="handleImageError($event)">
   <div class="card-body">
     <h5 class="card-title">{{ trip.name }}</h5>
     <p class="card-subtitle mb-2 text-muted">Code: {{ trip.code }}</p>
